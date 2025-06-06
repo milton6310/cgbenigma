@@ -1,6 +1,7 @@
 # local development environment
 command-list.txt
 pyproject.toml
+*_test.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

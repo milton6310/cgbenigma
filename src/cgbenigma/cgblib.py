@@ -364,3 +364,74 @@ def decrypt(cipher, keyset, ringset="", show=False):
     engine = Enigma(ROTOR_UKW_K, ROTOR_I_K, ROTOR_II_K, ROTOR_III_K, key=keyset, ring=ringset, debug=False)
     decoded = engine.encipher(cipher).upper()
     return decoded
+
+def find(ciphers, keywords, ringset="", show=False):
+    # ciphers: encrypted text to look for keywords
+    # keywords: list of keywords looking for in ciphers
+    # ringset: 3 letter ring value, use last 3 letters of cipher if not given
+    # return key-ring-cipher if decrypted text contains keywords by changing key values from AAA to ZZZ
+    ringProvided = (ringset != "")
+
+    alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    keys2 = []
+    for x in alphabets:
+        for y in alphabets:
+            keys2.append(x + y)
+            
+    outputs = []
+    for k in range(len(alphabets)):
+        key1 = alphabets[k]
+        for i in range(len(ciphers)):
+            if not ringProvided:
+                ringset = ciphers[i][-3:]
+            for j in range(len(keys2)):
+                keyset = key1 + keys2[j]
+                engine = Enigma(ROTOR_UKW_K, ROTOR_I_K, ROTOR_II_K, ROTOR_III_K, key=keyset, ring=ringset, debug=False)
+                decoded = engine.encipher(ciphers[i])
+                if isMatchFound(decoded, keywords):
+                    outputs.append({'Key':keyset, 'Ring':ringset, 'Message':decoded, 'Cipher':ciphers[i]})
+
+    if len(outputs) == 0:
+        print("There is no Key-Ring-Cipher tuple for search word, ", ringset)
+    else:
+        print("Key-Ring-Cipher tuple(s) found: ", str(len(outputs)))
+        if show:
+            for x in outputs: print(x)
+    return outputs
+
+def isMatchFound(text, keywords, andAll=False):
+    ret = False
+    if len(text) > 0 and len(keywords) > 0:
+        ret = andAll
+        for i in range(len(keywords)):
+            index = text.find(keywords[i])
+            if not andAll:
+                ret = ret or (index >= 0)
+            else:
+                ret = ret and (index >= 0)
+    return ret
+
+def getKnownCiphers(startWith=""):
+    # return all known ciphers starting with the given string
+    ciphers = [
+        "ABRYCTUGVZXUPB",
+        "FEWGDRHDDEEUMFFTEEMJXZR",
+        "GKJFHYXODIE",
+        "HFXPCQYZVATXAWIZPVE",
+        "JKGFIJPMCWSAEK",
+        "KOWVRSRWTMLDH",
+        "MLMTAHGBGFNIV",
+        "MQOLCSJTLGAJOKBSSBOMUPCE",
+        "MVERZRLQDBHQ",
+        "RHZVIYQIYSXVNQXQWIOVWPJO",
+        "SKCDKJCDJCYQSZKTZJPXPWIRN",
+        "UGMNCBXCRLDEY",
+        "VIOHIKNNGUAB",
+        "XLYPISNANIRUSFTFWMIY",
+        "YQHUDTABGALLOWLS",
+        "ZUQUPNZN"
+    ]
+    if startWith == "":
+        return ciphers
+    else:
+        return [x for x in ciphers if x.startswith(startWith)]

@@ -1,6 +1,7 @@
 # cgbenigma
-This package contains Python file(s) to use encryption methods reverse-engineered from cryptograms found on Chinese Gold Bars. In 1930s, some Chinese people deposited three hundred million US dollars into a branch of National City Bank in Shanghai. The bank issued several gold bars as a certificate of the transaction. On these gold bars, some plain Chinese characters and cryptograms were inscribed. The existence of Chinese Gold Bars has been brought out on the Internet through a blog published on [IACR web site](https://www.iacr.org/misc/china/) around 2009. The presumed owner of these gold bars known as Bin-Jiang Tao filed a law suit against the Citibank to pay the deposited fund back, but the court ruled out in favor of the Citibank and the claim was denied. The actual audio of oral argument between Bin-Jiang Tao and the Citibank can be accessed at [this link](https://www.courtlistener.com/audio/43830/bin-jiang-tao-v-citibank-n-a/). Recently, the cryptograms have been decrypted and the methods used in the generation of cryptograms also have been reverse-engineered and documented [here](https://github.com/milton6310/cgbCiphers.git).<br /><br />
-CGB (Chinese Gold Bar) ciphers was presumably created with Swiss-K Enigma machine. None of CGB cryptograms exceeds 26 alphabet characetrs. CGB ciphers also are multiply encrypted kind. In other words, after a piece of plain message was encrypted, another piece of plain message is added to form a new message for the next encryption. The decrypted results show that a few CGB ciphers have been encrypted messages three times in a row by adding extra words to get the final cryptogram. The more a message encrypted, the more important information it carries. In order to decrypt CGB cipher, two parameters need to be chosen and they are KEY and RING values. CGB ciphers devised a new method to further reduce the number of parameters down to one. In other words, a CGB cipher can be decrypted by using KEY value without the RING value. Some CGB ciphers was generated in a way to use the last three letters of the cryptogram as the RING value for its decryption.
+This package contains Python files that utilize encryption methods reverse-engineered from cryptograms found on Chinese Gold Bars. In the 1930s, some Chinese individuals deposited three hundred million US dollars into a branch of the National City Bank in Shanghai. In return, the bank issued several gold bars as certificates of the transaction. These gold bars were inscribed with plain Chinese characters and cryptograms. The existence of the Chinese Gold Bars gained attention on the Internet through a blog published on the [IACR web site](https://www.iacr.org/misc/china/) around 2009. The presumed owner of these gold bars, known as Bin-Jiang Tao filed a lawsuit against Citibank to recover the deposited funds; however, the court ruled in favor of Citibank, and the claim was denied. The actual audio of the oral argument between Bin-Jiang Tao and Citibank can be accessed at [this link](https://www.courtlistener.com/audio/43830/bin-jiang-tao-v-citibank-n-a/). Recently, the cryptograms have been decrypted, and the methods used to generate the cryptograms have also been reverse-engineered and documented [here](https://github.com/milton6310/cgbCiphers.git).<br /><br />
+CGB (Chinese Gold Bar) ciphers were presumably created with a Swiss-K Enigma machine. None of the CGB cryptograms exceed 26 alphabet characters. CGB ciphers are also multiply encrypted. In other words, after a piece of plain text was encrypted, another piece of plain text is added to form a new message for the next encryption. The decrypted results show that some CGB ciphers have been encrypted three times in a row by adding extra words to produce the final cryptogram. The more a message is encrypted, the more important information it carries.<br /><br />
+To decrypt a CGB cipher, two parameters need to be chosen: the KEY and the RING values. CGB ciphers introduced a new method to further reduce the number of parameters down to just one. In other words, a CGB cipher can be decrypted using only the KEY value, without needing the RING value. Some CGB ciphers are generated in such a way that the last three letters of the cryptogram are used as the RING value for decryption.<br /><br />
 
 # Install Library
 ```
@@ -12,6 +13,8 @@ Case 1. Encrypt a plaintext "HELLOWORLD" with KEY ("AAA") and RING ("BBB") value
 ```
 cgblib.encrypt("HELLOWORLD", "AAA", "BBB")
 [{'Key': 'AAA', 'Ring': 'BBB', 'Message': 'HELLOWORLD', 'Cipher': 'SYVEDJVFMT'}]
+cgblib.decrypt("SYVEDJVFMT", "AAA", "BBB")
+HELLOWORLD
 ```
 The cipher `SYVEDJVFMT` can be deciphered with the KEY ("AAA") and RING ("BBB") values to recover the text "HELLOWORLD".<br /><br />
 
@@ -36,3 +39,15 @@ cgblib.decrypt("RBTUTBUXXX", "CFY")
 ```
 The cipher "WXMARVWXXX" is decrypted with the KEY "HDO".
 The cipher "RBTUTBUXXX" is decoded with the KEY "CFY".
+
+Case 3. Find ciphers that contain the provided string in its decrypted text.
+```
+cgblib.find(["FEWGDRHDDEEUMFFTEEMJXZR"], ["BANK"])
+[{'Key': 'CGX', 'Ring': 'XZR', 'Message': 'DDVTBZTZOADREBANKQTZQMD', 'Cipher': 'FEWGDRHDDEEUMFFTEEMJXZR'}, {'Key': 'GPV', 'Ring': 'XZR', 'Message': 'OUSTGOVPBANKIZMUBMHUVOG', 'Cipher': 'FEWGDRHDDEEUMFFTEEMJXZR'}, {'Key': 'HWS', 'Ring': 'XZR', 'Message': 'BANKUPCWXJKZEZPFSVJRLDH', 'Cipher': 'FEWGDRHDDEEUMFFTEEMJXZR'}]
+```
+It checks if the decrypted text contains `BANK` while changing the KEY value from `AAA` to `ZZZ`. The last three letters of the cipher `XZR` is used as the RING value.
+```
+cgblib.find(["FEWGDRHDDEEUMFFTEEMJXZR"], ["BANK"], "AAA")
+[{'Key': 'CVU', 'Ring': 'AAA', 'Message': 'MKXBFBANKODXXRTMOQTDHQD', 'Cipher': 'FEWGDRHDDEEUMFFTEEMJXZR'}, {'Key': 'FHG', 'Ring': 'AAA', 'Message': 'DWQRBZTZOADREBANKQTZQMD', 'Cipher': 'FEWGDRHDDEEUMFFTEEMJXZR'}, {'Key': 'JQE', 'Ring': 'AAA', 'Message': 'OUSTGOVPBANKIZMUBMHUVOG', 'Cipher': 'FEWGDRHDDEEUMFFTEEMJXZR'}, {'Key': 'KXB', 'Ring': 'AAA', 'Message': 'BANKUPCWXJKZEZPFSVJRLDI', 'Cipher': 'FEWGDRHDDEEUMFFTEEMJXZR'}]
+```
+When a specific value was provided, it will be used as the RING value.
