@@ -5,7 +5,7 @@ To decrypt a CGB cipher, two parameters need to be chosen: the KEY and the RING 
 
 # Install Library
 ```
-python3 -m pip install cgbenigma
+py -m pip install cgbenigma
 ```
 
 # Examples
