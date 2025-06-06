@@ -1,6 +1,4 @@
 import unittest
-import sys
-sys.path.append("../dist")
 from cgbenigma import cgblib
 
 class TestBasicEncryption(unittest.TestCase):
