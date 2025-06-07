@@ -13,6 +13,8 @@ py -m pip install cgbenigma
 ```
 cgblib.encrypt("HELLOWORLD", "AAA", "BBB")
 [{'Key': 'AAA', 'Ring': 'BBB', 'Message': 'HELLOWORLD', 'Cipher': 'SYVEDJVFMT'}]
+```
+```
 cgblib.decrypt("SYVEDJVFMT", "AAA", "BBB")
 HELLOWORLD
 ```
