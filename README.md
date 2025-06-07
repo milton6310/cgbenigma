@@ -9,7 +9,7 @@ py -m pip install cgbenigma
 ```
 
 # Examples
-Case 1. Encrypt a plaintext "HELLOWORLD" with KEY ("AAA") and RING ("BBB") values.
+## Case 1. Encrypt a plaintext "HELLOWORLD" with KEY ("AAA") and RING ("BBB") values.
 ```
 cgblib.encrypt("HELLOWORLD", "AAA", "BBB")
 [{'Key': 'AAA', 'Ring': 'BBB', 'Message': 'HELLOWORLD', 'Cipher': 'SYVEDJVFMT'}]
@@ -18,7 +18,7 @@ HELLOWORLD
 ```
 The cipher `SYVEDJVFMT` can be deciphered with the KEY ("AAA") and RING ("BBB") values to recover the text "HELLOWORLD".<br /><br />
 
-Case 2. Encrypt a plaintext "HELLOWORLD" with the RING value.
+## Case 2. Encrypt a plaintext "HELLOWORLD" with the RING value.
 ```
 cgblib.encrypt("HELLOWORLD", "XXX")
 Key-Ring cipher tuple(s) found: 2
@@ -38,9 +38,9 @@ cgblib.decrypt("RBTUTBUXXX", "CFY")
 'HELLOWORLD'
 ```
 The cipher "WXMARVWXXX" is decrypted with the KEY "HDO".
-The cipher "RBTUTBUXXX" is decoded with the KEY "CFY".
+The cipher "RBTUTBUXXX" is decoded with the KEY "CFY".<br /><br />
 
-Case 3. Find ciphers that contain the provided string in its decrypted text.
+## Case 3. Find ciphers that contain the provided string in its decrypted text.
 ```
 cgblib.find(["FEWGDRHDDEEUMFFTEEMJXZR"], ["BANK"])
 [{'Key': 'CGX', 'Ring': 'XZR', 'Message': 'DDVTBZTZOADREBANKQTZQMD', 'Cipher': 'FEWGDRHDDEEUMFFTEEMJXZR'}, {'Key': 'GPV', 'Ring': 'XZR', 'Message': 'OUSTGOVPBANKIZMUBMHUVOG', 'Cipher': 'FEWGDRHDDEEUMFFTEEMJXZR'}, {'Key': 'HWS', 'Ring': 'XZR', 'Message': 'BANKUPCWXJKZEZPFSVJRLDH', 'Cipher': 'FEWGDRHDDEEUMFFTEEMJXZR'}]
@@ -50,4 +50,23 @@ It checks if the decrypted text contains `BANK` while changing the KEY value fro
 cgblib.find(["FEWGDRHDDEEUMFFTEEMJXZR"], ["BANK"], "AAA")
 [{'Key': 'CVU', 'Ring': 'AAA', 'Message': 'MKXBFBANKODXXRTMOQTDHQD', 'Cipher': 'FEWGDRHDDEEUMFFTEEMJXZR'}, {'Key': 'FHG', 'Ring': 'AAA', 'Message': 'DWQRBZTZOADREBANKQTZQMD', 'Cipher': 'FEWGDRHDDEEUMFFTEEMJXZR'}, {'Key': 'JQE', 'Ring': 'AAA', 'Message': 'OUSTGOVPBANKIZMUBMHUVOG', 'Cipher': 'FEWGDRHDDEEUMFFTEEMJXZR'}, {'Key': 'KXB', 'Ring': 'AAA', 'Message': 'BANKUPCWXJKZEZPFSVJRLDI', 'Cipher': 'FEWGDRHDDEEUMFFTEEMJXZR'}]
 ```
-When a specific value was provided, it will be used as the RING value.
+When a specific value was provided, it will be used as the RING value.<br /><br />
+
+## Case 4. Print decrypted text
+```
+decrypted = cgblib.getDecryptedCiphers("A")
+print(decrypted)
+[{'cipher': 'ABRYCTUGVZXIWA', 'key': 'ADD', 'ring': 'IWA', 'decoded': [{'order': 1, 'cipher': '', 'key': '', 'ring': '', 'message': 'REPAY'}, {'order': 2, 'cipher': 'SPIBLDZCQ', 'key': 'VMA', 'ring': 'ZCQ', 'message': 'USOGDWHEN'}], 'text': 'REPAY US OGD WHEN', 'interpretation': 'Repay us of gold when'}]
+```
+```
+print(decrypted[0]['cipher'])
+ABRYCTUGVZXIWA
+```
+```
+print(decrypted[0]['text'])
+REPAY US OGD WHEN
+```
+```
+print(decrypted[0]['interpretation'])
+Repay us of gold when
+```
