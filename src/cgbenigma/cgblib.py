@@ -435,3 +435,389 @@ def getKnownCiphers(startWith=""):
         return ciphers
     else:
         return [x for x in ciphers if x.startswith(startWith)]
+
+def getFinalCiphers(startWith=""):
+    # return all final ciphers starting with the given string
+    # both YQHUDTABGALLOWLS and VIOHIKNNGUAB are XORed into YQVIOHIKNNGUABLS
+    # the last 3 letters of ABRYCTUGVZXUPB is replaced with IWA to get ABRYCTUGVZXIWA 
+    ciphers = [
+        "ABRYCTUGVZXIWA",
+        "FEWGDRHDDEEUMFFTEEMJXZR",
+        "GKJFHYXODIE",
+        "HFXPCQYZVATXAWIZPVE",
+        "JKGFIJPMCWSAEK",
+        "KOWVRSRWTMLDH",
+        "MLMTAHGBGFNIV",
+        "MQOLCSJTLGAJOKBSSBOMUPCE",
+        "MVERZRLQDBHQ",
+        "RHZVIYQIYSXVNQXQWIOVWPJO",
+        "SKCDKJCDJCYQSZKTZJPXPWIRN",
+        "UGMNCBXCRLDEY",
+        "XLYPISNANIRUSFTFWMIY",
+        "YQVIOHIKNNGUABLS",
+        "ZUQUPNZN"
+    ]
+    if startWith == "":
+        return ciphers
+    else:
+        return [x for x in ciphers if x.startswith(startWith)]
+    
+def getDecryptedCiphers(startWith=""):
+    decrypted = [
+        {
+            "cipher": "ABRYCTUGVZXIWA",
+            "key": "ADD",
+            "ring": "IWA",
+            "decoded": [
+                {
+                    "order": 1,
+                    "cipher": "",
+                    "key": "",
+                    "ring": "",
+                    "message": "REPAY"
+                },
+                {
+                    "order": 2,
+                    "cipher": "SPIBLDZCQ",
+                    "key": "VMA",
+                    "ring": "ZCQ",
+                    "message": "USOGDWHEN"
+                }
+            ],
+            "text": "REPAY US OGD WHEN",
+            "interpretation": "Repay us of gold when"
+        },
+        {
+            "cipher": "FEWGDRHDDEEUMFFTEEMJXZR",
+            "key": "GPV",
+            "ring": "XZR",
+            "decoded": [
+                {
+                    "order": 1,
+                    "cipher": "",
+                    "key": "",
+                    "ring": "",
+                    "message": "OUSTGOVPBANK"
+                },
+                {
+                    "order": 2,
+                    "cipher": "IZMUBMHU",
+                    "key": "WSF",
+                    "ring": "MHU",
+                    "message": "CTGOLEES"
+                },
+                {
+                    "order": 3,
+                    "cipher": "",
+                    "key": "",
+                    "ring": "",
+                    "message": "VOG"
+                }
+            ],
+            "text": "OUST GOV P BANK CT GOL EES VOG",
+            "interpretation": "Ousted govenment purchased City Bank, government see log"
+        },
+        {
+            "cipher": "GKJFHYXODIE",
+            "key": "ZRQ",
+            "ring": "SRH",
+            "decoded": [
+                {
+                    "order": 1,
+                    "cipher": "",
+                    "key": "",
+                    "ring": "",
+                    "message": "AZHLATETOLD"
+                }
+            ],
+            "text": "AZH LATE TOLD",
+            "interpretation": "[AZH] late told"
+        },
+        {
+            "cipher": "HFXPCQYZVATXAWIZPVE",
+            "key": "HEV",
+            "ring": "SRH",
+            "decoded": [
+                {
+                    "order": 1,
+                    "cipher": "",
+                    "key": "",
+                    "ring": "",
+                    "message": "USBERGE"
+                },
+                {
+                    "order": 2,
+                    "cipher": "UIFEKSFGVWTZ",
+                    "key": "ZQN",
+                    "ring": "WTZ",
+                    "message": [
+                        {
+                            "order": 1,
+                            "cipher": "",
+                            "key": "",
+                            "ring": "",
+                            "message": "GOV"
+                        },
+                        {
+                            "order": 2,
+                            "cipher": "YDZXUFCPC",
+                            "key": "SHZ",
+                            "ring": "CPC",
+                            "message": "KEYJDSIAA"
+                        }
+                    ]
+                }
+            ],
+            "text": "US BERGE GOV KEY [JDS,IAA]",
+            "interpretation": "Us berge government key JDS and IAA"
+        },
+        {
+            "cipher": "JKGFIJPMCWSAEK",
+            "key": "CAS",
+            "ring": "AEK",
+            "decoded": [
+                {
+                    "order": 1,
+                    "cipher": "",
+                    "key": "",
+                    "ring": "",
+                    "message": "ACTDMZEFGSIGCT"
+                }
+            ],
+            "text": "ACT DMZ EFG SIG CT",
+            "interpretation": "Act DMZ [EFG] signal Bank CT"
+        },
+        {
+            "cipher": "KOWVRSRWTMLDH",
+            "key": "NQS",
+            "ring": "LDH",
+            "decoded": [
+                {
+                    "order": 1,
+                    "cipher": "",
+                    "key": "",
+                    "ring": "",
+                    "message": "ACCNO"
+                },
+                {
+                    "order": 2,
+                    "cipher": "NLBRHQEM",
+                    "key": "OMN",
+                    "ring": "QEM",
+                    "message": "ASHKEEPI"
+                }
+            ],
+            "text": "ACC NO ASH KEEP I",
+            "interpretation": "Account number [ASH KEEP I]"
+        },
+        {
+            "cipher": "MLMTAHGBGFNIV",
+            "key": "ZNZ",
+            "ring": "NIV",
+            "decoded": [
+                {
+                    "order": 1,
+                    "cipher": "",
+                    "key": "",
+                    "ring": "",
+                    "message": "AGOVTCIVBOUCO"
+                }
+            ],
+            "text": "A GOVT CIV BOU CO",
+            "interpretation": "A government civilian bought company"
+        },
+        {
+            "cipher": "MQOLCSJTLGAJOKBSSBOMUPCE",
+            "key": "FWQ",
+            "ring": "PCE",
+            "decoded": [
+                {
+                    "order": 1,
+                    "cipher": "",
+                    "key": "",
+                    "ring": "",
+                    "message": "USE"
+                },
+                {
+                    "order": 2,
+                    "cipher": "ALTYKDBJZ",
+                    "key": "YCI",
+                    "ring": "BJZ",
+                    "message": "DJUDBORIS"
+                },
+                {
+                    "order": 3,
+                    "cipher": "",
+                    "key": "",
+                    "ring": "",
+                    "message": "GOV"
+                },
+                {
+                    "order": 4,
+                    "cipher": "DVDULIDUD",
+                    "key": "CPU",
+                    "ring": "DUD",
+                    "message": "IDPKEYSEA"
+                }
+            ],
+            "text": "USED [JUD,BOR] IS GOV ID KEY [SEA]",
+            "interpretation": "(Who) used JUD and BOR is government with ID key SEA"
+        },
+        {
+            "cipher": "MVERZRLQDBHQ",
+            "key": "GIV",
+            "ring": "BHQ",
+            "decoded": [
+                {
+                    "order": 1,
+                    "cipher": "",
+                    "key": "",
+                    "ring": "",
+                    "message": "TWOMSGXORSRH"
+                }
+            ],
+            "text": "TWO MSG XOR SRH",
+            "interpretation": "Exclusive OR two messages [SRH]"
+        },
+        {
+            "cipher": "RHZVIYQIYSXVNQXQWIOVWPJO",
+            "key": "FHK",
+            "ring": "PJO",
+            "decoded": [
+                {
+                    "order": 1,
+                    "cipher": "",
+                    "key": "",
+                    "ring": "",
+                    "message": "PAY"
+                },
+                {
+                    "order": 2,
+                    "cipher": "NOCNNTTCLASES",
+                    "key": "DKU",
+                    "ring": "SES",
+                    "message": [
+                        {
+                            "order": 1,
+                            "cipher": "",
+                            "key": "",
+                            "ring": "",
+                            "message": "KEY"
+                        },
+                        {
+                            "order": 2,
+                            "cipher": "QIAHUNOQ",
+                            "key": "GGK",
+                            "ring": "NOQ",
+                            "message": "INUSSKAN"
+                        },
+                        {
+                            "order": 3,
+                            "cipher": "",
+                            "key": "",
+                            "ring": "",
+                            "message": "UP"
+                        },
+                    ]
+                },
+                {
+                    "order": 3,
+                    "cipher": "PASOLI",
+                    "key": "YQX",
+                    "ring": "OLI",
+                    "message": "DUEASK"
+                }
+            ],
+            "text": "PAY KEY IN [USS,KAN] UP DUE ASK",
+            "interpretation": "Pay up with keying in with USS and KAN on due asked"
+        },
+        {
+            "cipher": "SKCDKJCDJCYQSZKTZJPXPWIRN",
+            "key": "HNN",
+            "ring": "EFG",
+            "decoded": [
+                {
+                    "order": 1,
+                    "cipher": "",
+                    "key": "",
+                    "ring": "",
+                    "message": "BAY"
+                },
+                {
+                    "order": 2,
+                    "cipher": "WXDYFXJFEXCBN",
+                    "key": "RPY",
+                    "ring": "CBN",
+                    "message": "ADJGATAMASTWY"
+                },
+                {
+                    "order": 3,
+                    "cipher": "",
+                    "key": "",
+                    "ring": "",
+                    "message": "STACKYLOT"
+                }
+            ],
+            "text": "BAY ADJ GATA MAST WY STACKY LOT",
+            "interpretation": "Bay adjacent to Gata Mast Way, stacky lot"
+        },
+        {
+            "cipher": "UGMNCBXCRLDEY",
+            "key": "JEB",
+            "ring": "DEY",
+            "decoded": [
+                {
+                    "order": 1,
+                    "cipher": "LUQXGUMS",
+                    "key": "ULJ",
+                    "ring": "UMS",
+                    "message": "USVETSWW"
+                },
+                {
+                    "order": 2,
+                    "cipher": "",
+                    "key": "",
+                    "ring": "",
+                    "message": "SIGCO"
+                }
+            ],
+            "text": "US VET [SWW] SIG CO",
+            "interpretation": "Us vet [SWW] signal company"
+        },
+        {
+            "cipher": "YQVIOHIKNNGUABLS",
+            "key": "ZDE",
+            "ring": "SRH",
+            "decoded": [
+                {
+                    "order": 1,
+                    "cipher": "",
+                    "key": "",
+                    "ring": "",
+                    "message": "CONTACTFWTDEWVRY"
+                },
+            ],
+            "text": "CONTACT FWT DEWVRY",
+            "interpretation": "Contact [FWT] Dewvry"
+        },
+        {
+            "cipher": "ZUQUPNZN",
+            "key": "HQH",
+            "ring": "FWT",
+            "decoded": [
+                {
+                    "order": 1,
+                    "cipher": "",
+                    "key": "",
+                    "ring": "",
+                    "message": "XORIDIWA"
+                },
+            ],
+            "text": "XOR ID IWA",
+            "interpretation": "Exclusive OR with ID IWA"
+        },
+    ]
+    if startWith == "":
+        return decrypted
+    else:
+        return [x for x in decrypted if x["cipher"].startswith(startWith)]
