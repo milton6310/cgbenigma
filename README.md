@@ -1,12 +1,31 @@
 # cgbenigma
 This package contains Python files that utilize encryption methods reverse-engineered from cryptograms found on Chinese Gold Bars. In the 1930s, some Chinese individuals deposited three hundred million US dollars into a branch of the National City Bank in Shanghai. In return, the bank issued several gold bars as certificates of the transaction. These gold bars were inscribed with plain Chinese characters and cryptograms. The existence of the Chinese Gold Bars gained attention on the Internet through a blog published on the [IACR web site](https://www.iacr.org/misc/china/) around 2009. The presumed owner of these gold bars, known as Bin-Jiang Tao filed a lawsuit against Citibank to recover the deposited funds; however, the court ruled in favor of Citibank, and the claim was denied. The actual audio of the oral argument between Bin-Jiang Tao and Citibank can be accessed at [this link](https://www.courtlistener.com/audio/43830/bin-jiang-tao-v-citibank-n-a/). Recently, the cryptograms have been decrypted, and the methods used to generate the cryptograms have also been reverse-engineered and documented [here](https://github.com/milton6310/cgbCiphers.git).<br /><br />
 CGB (Chinese Gold Bar) ciphers were presumably created with a Swiss-K Enigma machine. None of the CGB cryptograms exceed 26 alphabet characters. CGB ciphers are also multiply encrypted. In other words, after a piece of plain text was encrypted, another piece of plain text is added to form a new message for the next encryption. The decrypted results show that some CGB ciphers have been encrypted three times in a row by adding extra words to produce the final cryptogram. The more a message is encrypted, the more important information it carries.<br /><br />
+<p align="center">
+  <img src="https://www.cryptomuseum.com/crypto/enigma/img/300879/043/full.jpg" width="350" title="Swiss-K Enigma Machine">
+</p>
 To decrypt a CGB cipher, two parameters need to be chosen: the KEY and the RING values. CGB ciphers introduced a new method to further reduce the number of parameters down to just one. In other words, a CGB cipher can be decrypted using only the KEY value, without needing the RING value. Some CGB ciphers are generated in such a way that the last three letters of the cryptogram are used as the RING value for decryption.<br /><br />
 
 # Install Library
 ```
 py -m pip install cgbenigma
 ```
+# Reconstructed Decrypted Text
+```
+A GOVT CIV BOU CO
+REPAY US OGD WHEN LATE TOLD
+
+OUST GOV P BANK CT GOL EES VOG
+PAY KEY IN [USS, KAN] UP IF DUE ASK
+USED [JUD, BOR] IS GOV ID P KEY [SEA]
+
+US VET SIG CO
+US BERGE GOV KEY [JDS, IAA]
+QUIZ BUYER(/ASH OK/A CLUE/BY NUM) TO BYE ANY OPP
+
+ACC NO [ASH KEEP I]
+```
+"A government civillian group bought company. The bank repay us of gold when late told. Ousted government purchased CT bank and the government see log of transaction. Pay up with keys [USS, KAN] in if due ask. Who used the keys [JUD, BOR] is the government with the identification P-KEY [SEA]. Buyer is challenged to bye any opposition. Account number [ASH KEEP I]."<br /><br />
 
 # Examples
 ## Case 1. Encrypt a plaintext "HELLOWORLD" with KEY ("AAA") and RING ("BBB") values.
