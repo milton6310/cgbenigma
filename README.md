@@ -5,7 +5,7 @@ CGB (Chinese Gold Bar) ciphers were presumably created with a Swiss-K Enigma mac
   <img src="https://www.cryptomuseum.com/crypto/enigma/img/300879/043/full.jpg" width="350" title="Swiss-K Enigma Machine">
 </p>
 To decrypt a CGB cipher, two parameters need to be chosen: the KEY and the RING values. CGB ciphers introduced a new method to further reduce the number of parameters down to just one. In other words, a CGB cipher can be decrypted using only the KEY value, without needing the RING value. Some CGB ciphers are generated in such a way that the last three letters of the cryptogram are used as the RING value for decryption.<br /><br />
-The original class definition of Enigma and Rotor was cloned from [pyEnigma](https://github.com/cedricbonhomme/pyEnigma) and used for the implementation of CGB ciphers.<br /><br />
+The original class definition of Enigma and Rotor was cloned from https://github.com/cedricbonhomme/pyEnigma and used for the implementation of CGB ciphers.<br /><br />
 
 # Install Library
 ```
