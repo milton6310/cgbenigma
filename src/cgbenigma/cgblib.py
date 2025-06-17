@@ -722,14 +722,21 @@ def getDecryptedCiphers(startWith=""):
                 },
                 {
                     "order": 3,
+                    "cipher": "",
+                    "key": "",
+                    "ring": "",
+                    "message": "IF"
+                },
+                {
+                    "order": 4,
                     "cipher": "PASOLI",
                     "key": "YQX",
                     "ring": "OLI",
                     "message": "DUEASK"
                 }
             ],
-            "text": "PAY KEY IN [USS,KAN] UP DUE ASK",
-            "interpretation": "Pay up with keying in with USS and KAN on due asked"
+            "text": "PAY KEY IN [USS,KAN] UP IF DUE ASK",
+            "interpretation": "Pay up with keying in with USS and KAN if due asked"
         },
         {
             "cipher": "SKCDKJCDJCYQSZKTZJPXPWIRN",
